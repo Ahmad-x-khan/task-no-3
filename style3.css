@@ -164,17 +164,63 @@ body {
  
 }
 
-.award input[type="checkbox"] {
+/* .award input[type="checkbox"] {
   margin-top: 2%;
   width: 18px;
   height: 18px;
-  margin: 0;
-  accent-color: #693232;  
-  color: rgb(8, 5, 5);
-  background: rgb(71, 36, 36); 
-  border: 2px solid white;
-  cursor:pointer;
+  margin: 0; */
+  /* accent-color: #693232;   */
+  /* color: rgb(8, 5, 5); */
+  /* background: rgb(71, 36, 36);  */
+  
+  /* cursor:pointer;
+} */
+/* .check input{
+    width: 20px;
+    height: 20px;
+    background-color: #770808;
 }
+
+.check input:checked{
+    color: #fff;
+    background-color: #680000;
+}  */
+
+
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check input[type="checkbox"]{
+   width: 15px;
+  height: 15px;
+}
+
+/* Hide default look */
+.check input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 2px solid rgba(238, 205, 205, 0.774);   /* White border */
+  background: brown;         /* Brown background */
+  cursor: pointer;
+  position: relative;
+}
+
+/* White check mark when selected */
+.check input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 
 
@@ -193,7 +239,6 @@ body {
   background: #fff;
   color: rgba(0,0,0,0.4);
   font-weight: lighter;
-
   border: none;
   width: 15px;
   height: 15px;
@@ -213,7 +258,7 @@ textarea {
   resize: none;
 }
 
-button[type="submit"] {
+ button[type="submit"] {
   margin: 0%;
   padding: 12px;
   background: #fff;
