@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Hollow Cube with Images</title>
+  <link rel="stylesheet" href="prectice.css">
+</head>
+<body>
+  <div class="scene">
+    <div class="cube">
+      <!-- Outer faces -->
+      <div class="face front outer"></div>
+      <div class="face back outer"></div>
+      <div class="face right outer"></div>
+      <div class="face left outer"></div>
+      <div class="face top outer"></div>
+      <div class="face bottom outer"></div>
+
+      <!-- Inner faces -->
+      <div class="face front inner"></div>
+      <div class="face back inner"></div>
+      <div class="face right inner"></div>
+      <div class="face left inner"></div>
+      <div class="face top inner"></div>
+      <div class="face bottom inner"></div>
+    </div>
+  </div>
+
+  <script>
+    const cube = document.querySelector(".cube");
+
+    let isDragging = false;
+    let startX, startY;
+    let rotateX = 20, rotateY = -20;
+    let currentX = 0, currentY = 0;
+
+    cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    // Stop auto animation on hover
+    cube.addEventListener("mouseenter", () => {
+      cube.style.animation = "none";
+    });
+
+    cube.addEventListener("mouseleave", () => {
+      cube.style.animation = "spin 8s infinite linear";
+    });
+
+    // Mouse drag rotate
+    cube.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      currentX = e.clientX - startX;
+      currentY = e.clientY - startY;
+      cube.style.transform = `rotateX(${rotateX - currentY / 2}deg) rotateY(${rotateY + currentX / 2}deg)`;
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (isDragging) {
+        rotateX -= currentY / 2;
+        rotateY += currentX / 2;
+        isDragging = false;
+      }
+    });
+  </script>
+</body>
+</html>
